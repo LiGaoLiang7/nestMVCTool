@@ -8,5 +8,3 @@ export class CatsController {
     return 'This action returns all cats';
   }
 }
-
-
