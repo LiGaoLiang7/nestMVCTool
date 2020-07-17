@@ -5,7 +5,6 @@ import { AppService } from './app.service';
 
 @Controller('hello')
 export class AppController {
-  
   // 构造器注入的方式
   constructor(private readonly appService: AppService) {}
   
@@ -24,5 +23,3 @@ export class AppController {
     return 'This action adds a new cat';
   }
 }
-
-
