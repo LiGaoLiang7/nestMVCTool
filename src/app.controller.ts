@@ -1,7 +1,8 @@
 // controller就是传统意义上的控制器，提供api接口 仅接收请求在合适的地方调用service
-import { Controller, Get, Post, Param, HttpStatus, Header, Response, HttpCode} from '@nestjs/common';
+import { Controller, Get, Query, Post, Body, Param, HttpStatus, Header, Response, HttpCode} from '@nestjs/common';
 // 引入App serverce
 import { AppService } from './app.service';
+import { WorldDTO } from './data.world'
 // import { CatsService } from './cat.service';
 
 @Controller('hello')
@@ -18,9 +19,21 @@ export class AppController {
   getHello() {
     return this.appService.getworld();
   }
-  
   @Get('class/:id')
   getClass(@Response() res, @Param('id') id): string{
     return res.status(HttpStatus.OK).json("hello world adasd12 " + id)
   }
+
+  @Get('query')
+  queryList(@Query() query): string{
+    // @Query()会把Query String解析成javascript对象
+    console.log(JSON.stringify(query))
+    return query
+  }
+  // 通过body传递数据
+  @Post('add')
+  create(@Body() worldDTO: WorldDTO){
+    return `平台:${worldDTO.name}建立`;
+  }
+
 }
