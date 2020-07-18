@@ -1,8 +1,9 @@
 // controller就是传统意义上的控制器，提供api接口 仅接收请求在合适的地方调用service
-import { Controller, Get, Query, Post, Body, Param, HttpStatus, Header, Response, HttpCode} from '@nestjs/common';
+import { Controller, Get, Query, Post, Body, Param, HttpStatus, Header, Response, HttpCode, UsePipes} from '@nestjs/common';
 // 引入App serverce
 import { AppService } from './app.service';
 import { WorldDTO } from './data.world'
+import { PlatformDTOValidationPipe } from './shared/pipes/PlatformDTOValidationPipe'
 // import { CatsService } from './cat.service';
 
 @Controller('hello')
@@ -32,6 +33,7 @@ export class AppController {
   }
   // 通过body传递数据
   @Post('add')
+  @UsePipes(PlatformDTOValidationPipe) // 过滤管道
   create(@Body() worldDTO: WorldDTO){
     return `平台:${worldDTO.name}建立`;
   }
