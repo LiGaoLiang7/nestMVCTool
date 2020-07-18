@@ -4,7 +4,7 @@ import { Controller, Get, Post, Param, HttpStatus, Header, Response, HttpCode} f
 import { AppService } from './app.service';
 // import { CatsService } from './cat.service';
 
-@Controller('hello11')
+@Controller('hello')
 export class AppController {
   // 构造器注入的方式
   // constructor(private readonly appService: AppService) {}
@@ -15,8 +15,8 @@ export class AppController {
   }
   @Get('world')
   @Header('Cache-Control', 'none')
-  getHello():string {
-    return this.appService.getHello();
+  getHello() {
+    return this.appService.getworld();
   }
   
   @Get('class/:id')
