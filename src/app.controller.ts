@@ -6,6 +6,7 @@ import { WorldDTO } from './data.world'
 import { PlatformDTOValidationPipe } from './shared/pipes/PlatformDTOValidationPipe'
 // import { CatsService } from './cat.service';
 
+
 @Controller('hello')
 export class AppController {
   // 构造器注入的方式
