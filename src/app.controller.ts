@@ -24,11 +24,10 @@ export class AppController {
   getClass(@Response() res, @Param('id') id): string{
     return res.status(HttpStatus.OK).json("hello world adasd12 " + id)
   }
-
   @Get('query')
   queryList(@Query() query): string{
     // @Query()会把Query String解析成javascript对象
-    console.log(JSON.stringify(query))
+    console.log(JSON.stringify(query));
     return query
   }
   // 通过body传递数据
@@ -37,5 +36,4 @@ export class AppController {
   create(@Body() worldDTO: WorldDTO){
     return `平台:${worldDTO.name}建立`;
   }
-
 }
